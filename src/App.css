@@ -120,16 +120,16 @@ body {
   font-size: 1.25rem;
   letter-spacing: -0.02em;
 }
-.brand__mark {
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
+.brand__logo {
+  width: 40px;
+  height: 40px;
   border-radius: 10px;
-  background: linear-gradient(135deg, var(--primary), var(--primary-2));
-  color: #fff;
-  font-size: 0.85rem;
-  font-weight: 700;
+  object-fit: cover;
+  display: block;
+}
+.brand--footer .brand__logo {
+  width: 46px;
+  height: 46px;
 }
 .nav {
   display: flex;
@@ -335,6 +335,92 @@ body {
 .card__desc {
   color: var(--muted);
   font-size: 0.96rem;
+}
+
+/* ===== Playlists ===== */
+.playlist {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.playlist:hover {
+  transform: translateY(-6px);
+  border-color: rgba(124, 92, 255, 0.5);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+.playlist__thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-items: center;
+}
+.playlist__emoji {
+  font-size: 3.4rem;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.35));
+}
+.playlist__play {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 1.1rem;
+  padding-left: 4px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.playlist:hover .playlist__play {
+  opacity: 1;
+  transform: scale(1);
+}
+.playlist__count {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.playlist__body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.playlist__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.playlist__desc {
+  color: var(--muted);
+  font-size: 0.92rem;
+  flex: 1;
+}
+.playlist__link {
+  margin-top: 16px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--primary-2);
+}
+.playlists__cta {
+  text-align: center;
+  margin-top: 48px;
 }
 
 /* ===== Split ===== */

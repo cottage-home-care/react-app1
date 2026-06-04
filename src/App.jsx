@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
+import logo from '../assets/codeabclogo.jpg'
 import './App.css'
 
 const YOUTUBE_URL = 'https://www.youtube.com/codeabc'
 
 const NAV_LINKS = [
   { label: 'Services', href: '#services' },
+  { label: 'Playlists', href: '#playlists' },
   { label: 'Work', href: '#work' },
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
@@ -50,6 +52,58 @@ const STATS = [
   { value: '5★', label: 'Average Rating' },
 ]
 
+// Swap the `url` fields with your real YouTube playlist links anytime.
+const PLAYLISTS = [
+  {
+    icon: '⚛️',
+    title: 'React Mastery',
+    desc: 'Build modern, production-ready UIs with React from scratch — hooks, state, routing & more.',
+    videos: '24 videos',
+    gradient: 'linear-gradient(135deg, #61dafb, #2563eb)',
+    url: `${YOUTUBE_URL}/playlists`,
+  },
+  {
+    icon: '🟨',
+    title: 'JavaScript Fundamentals',
+    desc: 'Master JavaScript in Bangla — from basics to advanced concepts every developer needs.',
+    videos: '32 videos',
+    gradient: 'linear-gradient(135deg, #f7df1e, #e8a400)',
+    url: `${YOUTUBE_URL}/playlists`,
+  },
+  {
+    icon: '🐳',
+    title: 'DevOps & Docker',
+    desc: 'Containers, CI/CD pipelines and deployment workflows explained step by step.',
+    videos: '18 videos',
+    gradient: 'linear-gradient(135deg, #2496ed, #1d63ed)',
+    url: `${YOUTUBE_URL}/playlists`,
+  },
+  {
+    icon: '☁️',
+    title: 'Cloud Computing',
+    desc: 'AWS, GCP and Azure essentials — architect and ship scalable apps on the cloud.',
+    videos: '20 videos',
+    gradient: 'linear-gradient(135deg, #ff9900, #ff5e3a)',
+    url: `${YOUTUBE_URL}/playlists`,
+  },
+  {
+    icon: '🐍',
+    title: 'Python for Everyone',
+    desc: 'Learn Python the right way — syntax, automation, and real-world project building.',
+    videos: '28 videos',
+    gradient: 'linear-gradient(135deg, #4584b6, #ffde57)',
+    url: `${YOUTUBE_URL}/playlists`,
+  },
+  {
+    icon: '🧩',
+    title: 'System Design',
+    desc: 'Design large-scale systems with confidence — databases, caching, queues and scaling.',
+    videos: '15 videos',
+    gradient: 'linear-gradient(135deg, #7c5cff, #4ec5ff)',
+    url: `${YOUTUBE_URL}/playlists`,
+  },
+]
+
 export default function App() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -66,7 +120,7 @@ export default function App() {
       <header className={`header ${scrolled ? 'header--scrolled' : ''}`}>
         <div className="container header__inner">
           <a href="#top" className="brand">
-            <span className="brand__mark">{'</>'}</span>
+            <img className="brand__logo" src={logo} alt="Code ABC logo" />
             <span className="brand__name">Code&nbsp;ABC</span>
           </a>
 
@@ -102,12 +156,10 @@ export default function App() {
         <div className="container hero__inner">
           <span className="pill">🚀 Building the future, one line at a time</span>
           <h1 className="hero__title">
-            We craft <span className="grad-text">digital products</span> that
-            people love to use.
+           <span className="grad-text">Code ABC</span> 
           </h1>
           <p className="hero__sub">
-            Code ABC is a software studio that designs, builds, and scales
-            beautiful web and mobile experiences for ambitious teams worldwide.
+          Code ABC features the best online web development, programming, Devops and Cloud tutorials in Bangla for all of the latest technologies
           </p>
           <div className="hero__actions">
             <a href="#contact" className="btn btn--primary">Start a Project</a>
@@ -156,8 +208,57 @@ export default function App() {
         </div>
       </section>
 
+      {/* ===== Playlists ===== */}
+      <section className="section section--alt" id="playlists">
+        <div className="container">
+          <div className="section__head">
+            <span className="eyebrow">Watch & Learn</span>
+            <h2 className="section__title">Our YouTube Playlists</h2>
+            <p className="section__lead">
+              Free, in-depth tutorial series in Bangla covering web development,
+              programming, DevOps and the cloud. Pick a track and start learning
+              today.
+            </p>
+          </div>
+
+          <div className="grid grid--3">
+            {PLAYLISTS.map((p) => (
+              <a
+                className="playlist"
+                key={p.title}
+                href={p.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <div className="playlist__thumb" style={{ background: p.gradient }}>
+                  <span className="playlist__emoji">{p.icon}</span>
+                  <span className="playlist__play">▶</span>
+                  <span className="playlist__count">{p.videos}</span>
+                </div>
+                <div className="playlist__body">
+                  <h3 className="playlist__title">{p.title}</h3>
+                  <p className="playlist__desc">{p.desc}</p>
+                  <span className="playlist__link">Watch playlist →</span>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <div className="playlists__cta">
+            <a
+              href={`${YOUTUBE_URL}/playlists`}
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn--youtube"
+            >
+              <span className="play-icon">▶</span> View all playlists
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ===== Work / Banner ===== */}
-      <section className="section section--alt" id="work">
+      <section className="section" id="work">
         <div className="container split">
           <div className="split__text">
             <span className="eyebrow">Why Code ABC</span>
@@ -231,7 +332,7 @@ codeABC.ship();`}
       <footer className="footer">
         <div className="container footer__inner">
           <div className="brand brand--footer">
-            <span className="brand__mark">{'</>'}</span>
+            <img className="brand__logo" src={logo} alt="Code ABC logo" />
             <span className="brand__name">Code&nbsp;ABC</span>
           </div>
           <p className="footer__tag">Building beautiful software since 2024.</p>
